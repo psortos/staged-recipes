@@ -14,6 +14,7 @@ build:
   number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
+  skip: True  # [linux32]
 
 requirements:
   build:
@@ -22,7 +23,6 @@ requirements:
   host:
     - pip
     - python >=3.6
-    - mariadb-connector-c
   run:
     - python >=3.6
 
