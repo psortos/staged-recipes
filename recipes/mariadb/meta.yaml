@@ -14,32 +14,18 @@ build:
   number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  skip: True  # [linux32]
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}sed               # [win]
-    - {{posix}}grep              # [win]
-    - {{posix}}autoconf
-    - {{posix}}automake          # [not win]
-    - {{posix}}automake-wrapper  # [win]
-    - {{posix}}pkg-config
-    - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ compiler('c') }}
+    - cmake
   host:
     - pip
     - python >=3.6
+    - mysql-connector-c
   run:
     - python >=3.6
-    - r-rmariadb
-
+    - mysql-connector-c
 test:
   imports:
     - mariadb
