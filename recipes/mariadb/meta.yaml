@@ -21,13 +21,17 @@ requirements:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
     - cmake
+    - mysql-connector-c
+    - mysql-connector-cpp
   host:
     - pip
     - python >=3.6
     - mysql-connector-c
+    - mysql-connector-cpp
   run:
     - python >=3.6
     - mysql-connector-c
+    - mysql-connector-cpp
 test:
   imports:
     - mariadb
