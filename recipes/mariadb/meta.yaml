@@ -20,11 +20,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - cmake
+    - r-rmariadb
   host:
     - pip
     - python >=3.6
   run:
     - python >=3.6
+    - r-rmariadb
 
 test:
   imports:
