@@ -16,14 +16,15 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
 
 requirements:
   build:
-    - toolchain
     - cmake
-
-run:
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+  run:
 
 test:
   commands:
