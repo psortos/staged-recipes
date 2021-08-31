@@ -1,0 +1,41 @@
+{% set name = "mariadb-connector-c" %}
+{% set version = "3.2.3" %}
+{% set sha256 = "b6aa38656438e092242a95d01d3a80a5ce95c7fc02ec81009f4f0f46262331f4" %}  # [not win]
+{% set sha256 = "511c9cf08292efec121dc6a47ca474cc98d7945bfc1ad9d0e66aab3162b21db5" %}  # [win]
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz  # [not win]
+  fn: {{ name }}-{{ version }}.zip  # [win]
+  url: https://downloads.mariadb.com/Connectors/c/connector-c-{{ version }}/{{ name }}-{{ version }}-src.tar.gz  # [not win]
+  url: https://downloads.mariadb.com/Connectors/c/connector-c-{{ version }}/{{ name }}-{{ version }}-src.zip  # [win]
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - toolchain
+    - cmake
+
+run:
+
+test:
+  commands:
+    - mariadb_config --version
+
+about:
+  home: https://downloads.mariadb.com/Connectors/c/
+  license: LGPL
+  license_family: LGPL
+  license_file: COPYING
+  summary: 'MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases.The library is LGPL licensed.'
+
+extra:
+  recipe-maintainers:
+    - psortos
