@@ -20,11 +20,9 @@ build:
 requirements:
   build:
     - cmake
-    - make                             # [unix]
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - make   # [unix]
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
   run:
 
 test:
